@@ -4,6 +4,8 @@
  */
 package br.com.ifba.curso.view;
 
+import br.com.ifba.curso.component.ButtonRenderer;
+import br.com.ifba.curso.component.ButtonEditor;
 import br.com.ifba.curso.controller.CursoIController;
 import br.com.ifba.curso.entity.Curso;
 import javax.swing.table.DefaultTableModel;
@@ -281,7 +283,7 @@ public class CursoListar extends javax.swing.JFrame {
 
     private void bntAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAdicionarActionPerformed
         // TODO add your handling code here:
-         DadosCurso dadosCursos = context.getBean(DadosCurso.class);
+          DadosCurso dadosCursos = new DadosCurso(cursoController);
 
         dadosCursos.setVisible(true);
 

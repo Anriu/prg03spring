@@ -3,7 +3,7 @@ package br.com.ifba.curso.service;
 import br.com.ifba.curso.entity.Curso;
 import br.com.ifba.curso.repository.CursoRepository;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
  * @author anriu
  */
 @Service
+@RequiredArgsConstructor
 public class CursoService implements CursoIService {
 
-    // Injeta automaticamente o Repository responsável pelo acesso ao banco
-    @Autowired
-    private CursoRepository cursoRepository;
+    // Repository responsável pelo acesso ao banco
+    private final CursoRepository cursoRepository;
 
     @Override
     public Curso save(Curso curso) {

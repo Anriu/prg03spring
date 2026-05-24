@@ -3,7 +3,7 @@ package br.com.ifba.curso.controller;
 import br.com.ifba.curso.entity.Curso;
 import br.com.ifba.curso.service.CursoIService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Controller;
  * @author anriu
  */
 @Controller
+@RequiredArgsConstructor
 public class CursoController implements CursoIController {
 
-    // Injeta automaticamente o service responsável pelas regras de negócio
-    @Autowired
-    private CursoIService cursoService;
+    // Service responsável pelas regras de negócio
+    private final CursoIService cursoService;
 
     @Override
     public Curso save(Curso curso) {

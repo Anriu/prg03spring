@@ -3,58 +3,60 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
+    <!-- Versão do modelo Maven -->
     <modelVersion>4.0.0</modelVersion>
-
-    <!-- Spring Boot -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.6</version>
-        <relativePath/>
-    </parent>
 
     <!-- Informações do projeto -->
     <groupId>br.com.ifba</groupId>
-    <artifactId>prg03spring</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>prg03spring</name>
-    <description>Projeto Spring com Swing</description>
+    <artifactId>prg03persistencia</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-    <!-- Configurações -->
+    <!-- Configurações do projeto -->
     <properties>
 
-        <!-- Versão do Java -->
-        <java.version>25</java.version>
-
-        <!-- Codificação -->
+        <!-- Define a codificação UTF-8 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- Classe principal -->
-        <start-class>br.com.ifba.Application</start-class>
+        <!-- Define a versão do Java -->
+        <maven.compiler.release>25</maven.compiler.release>
+
+        <!-- Classe principal do projeto -->
+        <exec.mainClass>br.com.ifba.Application</exec.mainClass>
 
     </properties>
 
     <dependencies>
 
-        <!-- Spring Boot principal -->
+        <!-- Spring Boot Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+            <version>3.5.0</version>
         </dependency>
 
-        <!-- Spring Data JPA / Hibernate -->
+        <!-- Spring Boot Data JPA -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>3.5.0</version>
         </dependency>
 
-        <!-- PostgreSQL -->
+        <!-- Driver PostgreSQL -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
+            <version>42.7.3</version>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.38</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Layout do NetBeans -->
@@ -64,44 +66,66 @@
             <version>RELEASE250</version>
         </dependency>
 
-        <!-- Testes -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
-
         <plugins>
 
             <!-- Plugin do Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.5.0</version>
+            </plugin>
+
+            <!-- Plugin para executar o projeto -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
 
                 <configuration>
-                    <mainClass>br.com.ifba.Application</mainClass>
+
+                    <!-- Classe principal executada -->
+                    <mainClass>
+                        br.com.ifba.Application
+                    </mainClass>
+
                 </configuration>
 
             </plugin>
 
-            <!-- Plugin do compilador -->
+            <!-- Plugin do compilador Maven -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
 
                 <configuration>
-                    <source>25</source>
-                    <target>25</target>
+
+                    <!-- Processador de anotações do Lombok -->
+                    <annotationProcessorPaths>
+
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.38</version>
+                        </path>
+
+                    </annotationProcessorPaths>
+
+                    <compilerArgs>
+
+                        <!-- Habilita recursos preview do Java -->
+                        <arg>--enable-preview</arg>
+
+                    </compilerArgs>
+
                 </configuration>
 
             </plugin>
 
         </plugins>
-
     </build>
 
 </project>

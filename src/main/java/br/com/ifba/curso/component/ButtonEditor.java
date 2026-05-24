@@ -1,7 +1,8 @@
-package br.com.ifba.curso.view;
+package br.com.ifba.curso.component;
 
 import br.com.ifba.curso.controller.CursoIController;
 import br.com.ifba.curso.entity.Curso;
+import br.com.ifba.curso.view.DadosCurso;
 import java.awt.Component;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

@@ -1,4 +1,4 @@
-package br.com.ifba.curso.view;
+package br.com.ifba.curso.component;
 
 import java.awt.Component;
 import javax.swing.JButton;

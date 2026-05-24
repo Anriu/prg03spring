@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  *
  * @author anriu
  */
-@Component
+
 public class DadosCurso extends javax.swing.JFrame {
 
     /**
@@ -23,28 +23,48 @@ public class DadosCurso extends javax.swing.JFrame {
     private Curso curso;
     private CursoIController cursoController;
     
-    public DadosCurso() {
+    public DadosCurso(CursoIController cursoController) {
         initComponents();
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        
+        setDefaultCloseOperation(
+              javax.swing.WindowConstants.DISPOSE_ON_CLOSE
+        );
+
+        // Recebe o controller
+        this.cursoController = cursoController;
+
+        // Cria um novo curso vazio
         this.curso = new Curso();
     }
     
-    public DadosCurso(Curso curso, CursoIController cursoController) {
-        initComponents();
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+    public DadosCurso(Curso curso,
+                      CursoIController cursoController) {
 
+        initComponents();
+
+        setDefaultCloseOperation(
+                javax.swing.WindowConstants.DISPOSE_ON_CLOSE
+        );
+
+        // Recebe o curso selecionado
         this.curso = curso;
+
+        // Recebe o controller
         this.cursoController = cursoController;
 
+        // Preenche os campos da tela
         txtNome.setText(curso.getNome());
         txtCodigo.setText(curso.getCodigoCurso());
 
+        // Define o status do curso
         if (curso.isAtivo()) {
             spnAtivo.setValue("Sim");
         } else {
             spnAtivo.setValue("Não");
         }
     }
+
+   
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -201,7 +221,7 @@ public class DadosCurso extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DadosCurso().setVisible(true);
+     
             }
         });
     }
